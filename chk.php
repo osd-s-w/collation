@@ -21,15 +21,15 @@ if (false) {
 
 
 $nameCols = [
-    ['name'=>'name_bin', 'collation'=>'utf8mb4_bin'             ],
-    ['name'=>'name_gen', 'collation'=>'utf8mb4_general_ci'      ],
-    ['name'=>'name_uni', 'collation'=>'utf8mb4_unicode_ci'      ],
-    ['name'=>'name_520', 'collation'=>'utf8mb4_unicode_520_ci'  ],
-    ['name'=>'name_9ii', 'collation'=>'utf8mb4_0900_ai_ci'      ],
-    ['name'=>'name_9si', 'collation'=>'utf8mb4_0900_as_ci'      ],
-    ['name'=>'name_9ss', 'collation'=>'utf8mb4_0900_as_cs'      ],
-    ['name'=>'name_ja' , 'collation'=>'utf8mb4_ja_0900_as_cs'   ],
-    ['name'=>'name_jas', 'collation'=>'utf8mb4_ja_0900_as_cs_ks'],
+    ['name'=>'name_bin', 'collation'=>'utf8mb4_bin'             , 'ver'=>'4.0.0'],
+    ['name'=>'name_gen', 'collation'=>'utf8mb4_general_ci'      , 'ver'=>'4.0.0'],
+    ['name'=>'name_uni', 'collation'=>'utf8mb4_unicode_ci'      , 'ver'=>'4.0.0'],
+    ['name'=>'name_520', 'collation'=>'utf8mb4_unicode_520_ci'  , 'ver'=>'5.2.0'],
+    ['name'=>'name_9ii', 'collation'=>'utf8mb4_0900_ai_ci'      , 'ver'=>'9.0.0'],
+    ['name'=>'name_9si', 'collation'=>'utf8mb4_0900_as_ci'      , 'ver'=>'9.0.0'],
+    ['name'=>'name_9ss', 'collation'=>'utf8mb4_0900_as_cs'      , 'ver'=>'9.0.0'],
+    ['name'=>'name_ja' , 'collation'=>'utf8mb4_ja_0900_as_cs'   , 'ver'=>'9.0.0'],
+    ['name'=>'name_jas', 'collation'=>'utf8mb4_ja_0900_as_cs_ks', 'ver'=>'9.0.0'],
 ];
 
 $sql = "
@@ -47,29 +47,7 @@ $sql = "
 ";
 $sth = $dbh->prepare($sql);
 
-$arr = [
-    ['char' => 'は', 'chk' => 'は'],
-    ['char' => 'は', 'chk' => 'ば'],
-    ['char' => 'は', 'chk' => 'ぱ'],
-    ['char' => 'は', 'chk' => 'ハ'],
-    ['char' => 'は', 'chk' => 'バ'],
-    ['char' => 'は', 'chk' => 'パ'],
-    ['char' => 'は', 'chk' => 'ﾊ' ],
-    ['char' => 'は', 'chk' => 'ﾊﾞ'],
-    ['char' => 'は', 'chk' => 'ﾊﾟ'],
-    ['char' => 'a' , 'chk' => 'À' ],
-    ['char' => 'a' , 'chk' => 'A' ],
-    ['char' => 'a' , 'chk' => 'Ａ'],
-    ['char' => 'a' , 'chk' => 'Á' ],
-    ['char' => '🍣', 'chk' => '🍺'],
-    ['char' => 'や', 'chk' => 'ゃ'],
-    ['char' => 'や', 'chk' => 'ヤ'],
-    ['char' => 'や', 'chk' => 'ャ'],
-    ['char' => 'や', 'chk' => 'ｬ' ],
-    ['char' => 'つ', 'chk' => 'っ'],
-    ['char' => 'つ', 'chk' => 'づ'],
-    ['char' => 'あ', 'chk' => 'ぁ'],
-];
+$data = include __DIR__.'/data.php';
 
 $results = [
     'char' => [],
@@ -78,7 +56,7 @@ $results = [
 foreach ($nameCols as $col) {
     $results[$col['collation']] = [];
 }
-foreach ($arr as $key => $val) {
+foreach ($data as $key => $val) {
     if (!$sth->execute(['chk'=>$val['chk'], 'char'=>$val['char']])) {
         $err = $sth->errorInfo();
         throw new Exception($err[2]);
@@ -97,14 +75,4 @@ foreach ($results as $key => $val) {
     echo implode("\t", $val);
     echo "\n";
 }
-exit;
 
-print_r($results);
-exit;
-
-if (isset($results[0])) {
-    echo implode("\t", array_keys($results[0]))."\n";
-}
-foreach ($results as $row) {
-    echo implode("\t", $row)."\n";
-}
