@@ -41,13 +41,56 @@ $sql = "
         , CASE WHEN name_9ii = :chk THEN '○' ELSE '×' END name_9ii
         , CASE WHEN name_9si = :chk THEN '○' ELSE '×' END name_9si
         , CASE WHEN name_9ss = :chk THEN '○' ELSE '×' END name_9ss
-        , CASE WHEN name_ja  = :chk THEN '○' ELSE '×' END name_ja 
+        , CASE WHEN name_ja  = :chk THEN '○' ELSE '×' END name_ja
         , CASE WHEN name_jas = :chk THEN '○' ELSE '×' END name_jas
     FROM meibo WHERE name_bin = :char
 ";
 $sth = $dbh->prepare($sql);
 
 $data = include __DIR__.'/data.php';
+
+$results = [
+    'char' => [],
+    'chk'  => [],
+];
+foreach ($nameCols as $col) {
+    $results[$col['collation']] = [];
+}
+foreach ($data as $key => $val) {
+    if (!$sth->execute(['chk'=>$val['chk'], 'char'=>$val['char']])) {
+        $err = $sth->errorInfo();
+        throw new Exception($err[2]);
+    }
+    while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+        $results['char'][] = $val['char'];
+        $results['chk'][] = $val['chk'];
+        foreach ($nameCols as $col) {
+            $results[$col['collation']][] = $row[$col['name']];
+        }
+    }
+    $sth->closeCursor();
+}
+foreach ($results as $key => $val) {
+    echo "{$key}\t";
+    echo implode("\t", $val);
+    echo "\n";
+}
+
+// LIKE
+$sql = "
+    SELECT
+          CASE WHEN name_bin LIKE :chk THEN '○' ELSE '×' END name_bin
+        , CASE WHEN name_gen LIKE :chk THEN '○' ELSE '×' END name_gen
+        , CASE WHEN name_uni LIKE :chk THEN '○' ELSE '×' END name_uni
+        , CASE WHEN name_520 LIKE :chk THEN '○' ELSE '×' END name_520
+        , CASE WHEN name_9ii LIKE :chk THEN '○' ELSE '×' END name_9ii
+        , CASE WHEN name_9si LIKE :chk THEN '○' ELSE '×' END name_9si
+        , CASE WHEN name_9ss LIKE :chk THEN '○' ELSE '×' END name_9ss
+        , CASE WHEN name_ja  LIKE :chk THEN '○' ELSE '×' END name_ja
+        , CASE WHEN name_jas LIKE :chk THEN '○' ELSE '×' END name_jas
+    FROM meibo WHERE name_bin = :char
+";
+$sth = $dbh->prepare($sql);
 
 $results = [
     'char' => [],
