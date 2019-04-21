@@ -16,7 +16,7 @@ SELECT 'utf8mb4_bin' AS `collation`
  , 'a' COLLATE utf8mb4_bin = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_bin = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_bin = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_bin = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_bin = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_general_ci' AS `collation`
@@ -37,7 +37,7 @@ SELECT 'utf8mb4_general_ci' AS `collation`
  , 'a' COLLATE utf8mb4_general_ci = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_general_ci = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_general_ci = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_general_ci = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_general_ci = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_unicode_ci' AS `collation`
@@ -58,7 +58,7 @@ SELECT 'utf8mb4_unicode_ci' AS `collation`
  , 'a' COLLATE utf8mb4_unicode_ci = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_unicode_ci = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_unicode_ci = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_unicode_ci = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_unicode_ci = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_unicode_520_ci' AS `collation`
@@ -79,7 +79,7 @@ SELECT 'utf8mb4_unicode_520_ci' AS `collation`
  , 'a' COLLATE utf8mb4_unicode_520_ci = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_unicode_520_ci = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_unicode_520_ci = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_unicode_520_ci = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_unicode_520_ci = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_0900_ai_ci' AS `collation`
@@ -100,7 +100,7 @@ SELECT 'utf8mb4_0900_ai_ci' AS `collation`
  , 'a' COLLATE utf8mb4_0900_ai_ci = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_0900_ai_ci = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_0900_ai_ci = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_0900_ai_ci = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_0900_ai_ci = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_0900_as_ci' AS `collation`
@@ -121,7 +121,7 @@ SELECT 'utf8mb4_0900_as_ci' AS `collation`
  , 'a' COLLATE utf8mb4_0900_as_ci = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_0900_as_ci = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_0900_as_ci = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_0900_as_ci = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_0900_as_ci = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_0900_as_cs' AS `collation`
@@ -142,7 +142,7 @@ SELECT 'utf8mb4_0900_as_cs' AS `collation`
  , 'a' COLLATE utf8mb4_0900_as_cs = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_0900_as_cs = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_0900_as_cs = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_0900_as_cs = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_0900_as_cs = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_ja_0900_as_cs' AS `collation`
@@ -163,7 +163,7 @@ SELECT 'utf8mb4_ja_0900_as_cs' AS `collation`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_ja_0900_as_cs = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_ja_0900_as_cs = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 
 UNION
 SELECT 'utf8mb4_ja_0900_as_cs_ks' AS `collation`
@@ -184,5 +184,5 @@ SELECT 'utf8mb4_ja_0900_as_cs_ks' AS `collation`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs_ks = 'Ａ' AS `a=Ａ`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs_ks = 'A' AS `a=A`
  , 'a' COLLATE utf8mb4_ja_0900_as_cs_ks = 'Á' AS `a=Á`
- , '🍣' COLLATE utf8mb4_ja_0900_as_cs_ks = '🍺' AS `🍣=🍺`
+ , '🍣' COLLATE utf8mb4_ja_0900_as_cs_ks = '🍺' AS `ｽｼ=ﾋﾞｰﾙ`
 ;
