@@ -19,7 +19,7 @@ foreach ($collations as $collate) {
     $buf = [];
     foreach ($data as $val) {
         $buf[] = sprintf(
-            " '%s' COLLATE %s LIKE '%s' AS `%s≒%s`\n"
+            " '%s' COLLATE %s > '%s' AS `%s>%s`\n"
             , $val['char']
             , $collate
             , $val['chk']
